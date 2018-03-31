@@ -48,7 +48,7 @@ echo ${EEXT} "${NRM}Macro's home directory has been set as ${BLD}${MACRO_HOME_DI
 echo ${EEXT} "============================================================================================"
 echo ${EEXT} "STEP 2\t➸\t Copying Record Files"
 echo ${EEXT} "============================================================================================\n"
-[ -d ${MACRO_HOME_DIR}/bin ] || mkdir ${MACRO_HOME_DIR}/bin && cp -f $(pwd)/record.sh ${MACRO_HOME_DIR}/bin/
+[ -d ${MACRO_HOME_DIR}/bin ] || mkdir ${MACRO_HOME_DIR}/bin && cp -f $(pwd)/src/record.sh ${MACRO_HOME_DIR}/bin/
 [ -d ${MACRO_HOME_DIR}/bin/cmd ] || mkdir ${MACRO_HOME_DIR}/bin/cmd && ln -s ${MACRO_HOME_DIR}/bin/record.sh ${MACRO_HOME_DIR}/bin/cmd/rcd
 echo ${EEXT} "Record files has been copied"
 touch ${MACRO_HOME_DIR}/bin/record.config

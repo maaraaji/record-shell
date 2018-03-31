@@ -1,7 +1,11 @@
 # Record - Record your terminal commands and executes from anywhere anytime any number of times without hassle.
 ---
-rcd will record your desired commands and make it as a single script 
 
+#### Installation
+
+
+rcd will record your desired commands and make it as a single script 
+```bash
 USAGE: 	rcd [-s] [-a] [-d] [-e] [-h] [-q] [-l] [-v] FILENAME or NUMBER [-r] Scriptname.sh [-c] SOURCE_FILE DIR/TARGET_FILE [-x] FILENAME or NUMBER [-n] SOURCE_FILE TARGET_FILE
  
 	-s			Start the recording
@@ -29,4 +33,4 @@ USAGE: 	rcd [-s] [-a] [-d] [-e] [-h] [-q] [-l] [-v] FILENAME or NUMBER [-r] Scri
 	-x			With FILENAME or NUMBER, Execute the specific script file
  
 	-n			With SOURCE_FILE TARGET_FILE, Rename the recorded SOURCE file as TARGET filename
-
+```
