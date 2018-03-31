@@ -1,5 +1,4 @@
 # Initialization of global variables
-
 # New Line + Tab + Bold
 NTB="\n\t$(tput bold)"
 # Normal + Tab + Dash + Tab
@@ -21,6 +20,10 @@ if [[ $(ps -p $$) =~ "bash" ]]; then
     EEXT="-e"
 else
     EEXT=""
+fi
+
+if [[ $(echo ${TERM_PROGRAM}) =~ "Apple_Terminal" ]]; then
+    SEDE="''"
 fi
 
 # USAGE="\n${BLD}${UND}$(basename ${0})${NRM} will record your desired commands and make it as a single script
@@ -70,9 +73,9 @@ function getRecordFilename() {
 function initRecordConfig() {
     AVAIL_CONFIG=$(cat ${RCF})
     if [[ ${AVAIL_CONFIG} = "" ]]; then
-        echo "ST ${ST}" > "${RCF}"
-        echo "AD ${AD}" >> "${RCF}"
-        echo "FN ${FN}" >> "${RCF}"
+        echo "ST ${ST}" > ${RCF}
+        echo "AD ${AD}" >> ${RCF}
+        echo "FN ${FN}" >> ${RCF}
         # echo "H${AVAIL_CONFIG}E"
     fi
 }
@@ -85,8 +88,8 @@ function recordStart() {
         mkdir "${RSD}"
     fi
     touch "${FN}"
-    sed -i "s|^ST.*|ST ${ST}|g" "${RCF}"
-    sed -i "s|^FN.*|FN ${FN}|g" "${RCF}"
+    sed -i ${SEDE} "s|^ST.*|ST ${ST}|g;" ${RCF}
+    sed -i ${SEDE} "s|^FN.*|FN ${FN}|g;" ${RCF}
     return
 }
 
@@ -95,6 +98,8 @@ function startAsOption() {
     # If the start configuration is already set.
     if [[ ! -f "${RCF}" ]]; then
         touch "${RCF}"
+    fi
+    if [[ $(cat ${RCF}) = "" ]]; then
         initRecordConfig
     fi
     if [[ $(grep "ST" "${RCF}") =~ YES ]]; then
@@ -105,7 +110,7 @@ function startAsOption() {
         # If the start configuration is not set
         ST="YES"
         recordStart
-        echo ${EEXT}E "\nYou have started the recording.
+        echo ${EEXT} "\nYou have started the recording.
         \nYour script filename is ${BLD}${FN}${NRM}\n"
         # if [[ $(grep "AD" "${RCF}") =~ "NO" ]]; then
         #     echo ${EEXT} "Not recording directory automatically. To enable it\nstart recording with \"-ad\" as option\n"
@@ -166,7 +171,7 @@ function endAsOption() {
         exit 1
     fi
     if [[ $(grep "ST" ${RCF}) =~ "YES" ]]; then
-        sed -i "s|^ST.*|ST ${ST}|g" ${RCF}
+        sed -i ${SEDE} "s|^ST.*|ST ${ST}|g" ${RCF}
         echo ${EEXT} "\nRecord Stopped\n"
     fi
     return
@@ -212,7 +217,7 @@ function showSpecificScriptAsOption() {
 function listFilesAsOption() {
     LIST_OF_FILES_AFTER_HIGHLIGHT=""
     getRecordFilename
-    LIST_OF_FILES=$(ls -ltrh $(dirname ${FN}) | nl -b p[.*sh] -n ln)
+    LIST_OF_FILES=$(ls -ltrh ${RSD} | nl -b p[.*sh] -n ln)
     statusAsOption >/dev/null
     if [[ ${?} -ne 1 ]]; then
         echo ${EEXT} "\nRecord is running and can store the script to the highlighted file"
@@ -343,14 +348,14 @@ function autodirAsOption() {
         echo ${EEXT} "\nAuto Recording of the directory already enforced\n"
     else
         AD="YES"
-        sed -i "s/^AD.*/AD ${AD}/g" "${RCF}"
+        sed -i ${SEDE} "s/^AD.*/AD ${AD}/g" "${RCF}"
         echo ${EEXT} "\nEnforcing autorecording of directory for all the recording commands. It will record the directory automatically until record -end\n"
     fi
 }
 
 function manudirAsOption() {
     AD="NO"
-    sed -i "s/^AD .*/AD ${AD}/g" "${RCF}"
+    sed -i ${SEDE} "s/^AD .*/AD ${AD}/g" "${RCF}"
     echo "Enfornced manual recording. You can record the directory by typing \"pwd && record -ab\""
 }
 
@@ -436,15 +441,3 @@ while getopts :sadehqnlc:v:x:r: opt "$@"; do
         \?) echo ${EEXT} "\n${BLD}Invalid Input.${NRM}" >&2; helpAsOption     ;;
     esac
 done
-
-USAGE="\n${BLD}${UND}$(basename ${0})${NRM} will record your desired commands and make it as a single script
-    \n\nUSAGE:
-    ${BLD}\trcd ([-s] [-a] [-d] [-e] [-h] [-q] [-l] [-v] <filename> or <number> [-r] <filename> [-c] ${UND}<SOURCE_FILE> <TARGET_FILE>${BLD}) [-x] <filename> or <number> [-n] ${UND}<SOURCE_FILE> <TARGET_FILE>${NRM}\n
-    ${NTB}-start${NTDT}To start the recording
-    ${NTB}-ab${NTDT}To record the previous last command to the script file
-    ${NTB}-dir${NTDT}To record the current working directory to the script file
-    ${NTB}-shs${NTDT}To show the recorded script so far
-    ${NTB}-ls${NTDT}To show the list of recorded script filenames
-    ${NTB}-status${NTDT}To print the current status of the recording
-    ${NTB}-stop${NTDT}To finish recording of the script
-    ${NTB}-rmes${NTDT}To remove recorded empty script files\n"
