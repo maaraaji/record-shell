@@ -9,8 +9,10 @@ SET_LOCAL_BIN_PATH="NO"
 LOCAL_SHELL="BASH"
 if [[ $(ps -p $$) =~ "bash" ]]; then
     EEXT="-e"
+    REDP="-p"
 else
     EEXT=""
+    REDP
 fi
 
 function steps(){
@@ -21,7 +23,12 @@ function steps(){
 
 steps "STEP 1\t➸\t Create home directory for ${BLD}Record(rcd)${NRM}"
 echo ${EEXT} "Default is ${BLD}${MACRO_HOME_DIR}${NRM}"
-read -p "Set Manually/Set Default [m/d] : ${BLD}" CREATE_MACRO_HOME_DIR
+echo ${REDP}
+if [[ $(ps -p $$) =~ "bash" ]]; then
+    read -p "Set Manually/Set Default [m/d] : ${BLD}" CREATE_MACRO_HOME_DIR
+else
+    read "CREATE_MACRO_HOME_DIR?Set Manually/Set Default [m/d] : ${BLD}" 
+fi
 while [[ "${HOME_DIR_CREATED}" = 0 ]]; do
     case "${CREATE_MACRO_HOME_DIR}" in
         m)
@@ -49,7 +56,7 @@ echo ${EEXT} "==================================================================
 echo ${EEXT} "STEP 2\t➸\t Copying Record Files"
 echo ${EEXT} "============================================================================================\n"
 [ -d ${MACRO_HOME_DIR}/bin ] || mkdir ${MACRO_HOME_DIR}/bin && cp -f $(pwd)/src/record.sh ${MACRO_HOME_DIR}/bin/
-[ -d ${MACRO_HOME_DIR}/bin/cmd ] || mkdir ${MACRO_HOME_DIR}/bin/cmd && ln -s ${MACRO_HOME_DIR}/bin/record.sh ${MACRO_HOME_DIR}/bin/cmd/rcd
+[ -d ${MACRO_HOME_DIR}/bin/cmd ] || mkdir ${MACRO_HOME_DIR}/bin/cmd && ln -s ${MACRO_HOME_DIR}/bin/record.sh ${MACRO_HOME_DIR}/bin/cmd/rcd 2>/dev/null
 echo ${EEXT} "Record files has been copied"
 touch ${MACRO_HOME_DIR}/bin/record.config
 echo ${EEXT} "Record config file has been copied\n"
@@ -84,13 +91,12 @@ if test -n "$BASH_VERSION"; then
     fi
 elif test -n "$ZSH_VERSION"; then
     echo ${EEXT} "You are using ${BLD}zsh ${ZSH_VERSION}${NRM}"
-    sed -i 's|^echo ${EEXT} -e|echo|g' "${MACRO_HOME_DIR}/bin/record.sh" >${MACRO_HOME_DIR}/bin/record_zsh.sh
     while [[ ${ADDED_TO_ZSH} = 0 ]]; do
         if [[ ! $(grep "PATH" ${HOME}/.zshrc) =~ "${MACRO_HOME_DIR}/bin/cmd" ]]; then
             echo ${EEXT} "export PATH=$PATH:${MACRO_HOME_DIR}/bin/cmd" >>${HOME}/.zshrc
             echo ${EEXT} "Added to PATH\n"
             source ${HOME}/.zshrc
-            echo ${EEXT} "ZSH Profile sourced\n"
+            # echo ${EEXT} "ZSH Profile sourced"
         else
             echo ${EEXT} "Already available at export PATH in your zsh profile\n"
             ADDED_TO_ZSH=1

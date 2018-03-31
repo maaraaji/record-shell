@@ -24,6 +24,8 @@ fi
 
 if [[ $(echo ${TERM_PROGRAM}) =~ "Apple_Terminal" ]]; then
     SEDE="''"
+elif [[ $(echo ${TERM_PROGRAM}) =~ "iTerm.app" ]]; then
+    SEDE="''"
 fi
 
 # USAGE="\n${BLD}${UND}$(basename ${0})${NRM} will record your desired commands and make it as a single script
@@ -149,7 +151,7 @@ function dirAsOption() {
 # If the user wants to know the status of record. If running or not running 
 function statusAsOption() {
     if [[ ! -f "${RCF}" ]]; then
-        echo ${EEXT} "\nRecord haven't started ever. Start the recording using $(tput bold)${CMD_NAME} -s$(tput sgr0) \n"
+        echo ${EEXT} "\nRecord haven't started ever. Start the recording using ${BLD}${CMD_NAME} -s${NRM} \n"
         echo ${EEXT} ${USAGE}
         return 1
     elif [[ $(grep "ST" ${RCF}) =~ "NO" ]]; then
@@ -217,6 +219,10 @@ function showSpecificScriptAsOption() {
 function listFilesAsOption() {
     LIST_OF_FILES_AFTER_HIGHLIGHT=""
     getRecordFilename
+    if [[ ! -d ${RSD} ]]; then
+        echo ${EEXT} "\nRecord haven't started ever. Start the recording using ${BLD}${CMD_NAME} -s${NRM} \n"
+        exit 1
+    fi
     LIST_OF_FILES=$(ls -ltrh ${RSD} | nl -b p[.*sh] -n ln)
     statusAsOption >/dev/null
     if [[ ${?} -ne 1 ]]; then
