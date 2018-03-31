@@ -85,8 +85,8 @@ function recordStart() {
         mkdir "${RSD}"
     fi
     touch "${FN}"
-    sed -i '' "s|^ST.*|ST ${ST}|g" "${RCF}"
-    sed -i '' "s|^FN.*|FN ${FN}|g" "${RCF}"
+    sed -i "s|^ST.*|ST ${ST}|g" "${RCF}"
+    sed -i "s|^FN.*|FN ${FN}|g" "${RCF}"
     return
 }
 
@@ -166,7 +166,7 @@ function endAsOption() {
         exit 1
     fi
     if [[ $(grep "ST" ${RCF}) =~ "YES" ]]; then
-        sed -i '' "s|^ST.*|ST ${ST}|g" ${RCF}
+        sed -i "s|^ST.*|ST ${ST}|g" ${RCF}
         echo ${EEXT} "\nRecord Stopped\n"
     fi
     return
@@ -343,14 +343,14 @@ function autodirAsOption() {
         echo ${EEXT} "\nAuto Recording of the directory already enforced\n"
     else
         AD="YES"
-        sed -i '' "s/^AD.*/AD ${AD}/g" "${RCF}"
+        sed -i "s/^AD.*/AD ${AD}/g" "${RCF}"
         echo ${EEXT} "\nEnforcing autorecording of directory for all the recording commands. It will record the directory automatically until record -end\n"
     fi
 }
 
 function manudirAsOption() {
     AD="NO"
-    sed -i '' "s/^AD .*/AD ${AD}/g" "${RCF}"
+    sed -i "s/^AD .*/AD ${AD}/g" "${RCF}"
     echo "Enfornced manual recording. You can record the directory by typing \"pwd && record -ab\""
 }
 
