@@ -11,9 +11,9 @@ NRM="$(tput sgr0)"
 # Underline
 UND="$(tput smul)"
 # Record Configuration file
-RCF="${HOME}/record.config"
+RCF="${HOME}/rcd-home/bin/record.config"
 # Record Scripts Directory
-RSD="${HOME}/rcd-scripts/"
+RSD="${HOME}/rcd-home/rcd-scripts/"
 # Command Name
 CMD_NAME=$(basename ${0})
 # Echo extended
