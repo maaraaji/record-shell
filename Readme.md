@@ -3,22 +3,28 @@
 #### Record your terminal commands and executes from anywhere anytime any number of times without hassle.
 ### **Installation**
 1. Clone this git URL
->`$ git clone https://github.com/maaraaji/record-shell.git`
+```bash
+$ git clone https://github.com/maaraaji/record-shell.git
+```
 2. Navigate to cloned record-shell folder and give executable permission to install.sh using `chmod`
-> `$ cd record-shell`  
-`$ chmod +x ./install.sh`
+```bash
+$ cd record-shell
+$ chmod +x ./install.sh
+```
 3. Run the installer in your desired terminal.
+```bash
+#When you are using bash
+$ ./install.sh
 
-**When you are using bash**
->`$ ./install.sh`  
-
-**When you are using ZSH**
->`$ zsh ./instsall.sh`
-
+#When you are using ZSH
+$ zsh ./instsall.sh
+```
 4. It will ask for the home directory of record. By default it will set as home_directory/rcd-home but you can change it to whichever place you want
 
->To set default type **`d`**  
->To set manual type **`m`**, then it will ask you to enter the home directory name
+```bash
+To set default type d
+To set manual type **`m`**, then it will ask you to enter the home directory name
+```
 
 5. Thats It all done. You are good to use **rcd** command
 
