@@ -7,7 +7,7 @@ CREATE_MACRO_HOME_DIR="d"
 HOME_DIR_CREATED=0
 SET_LOCAL_BIN_PATH="NO"
 LOCAL_SHELL="BASH"
-if [[ $(ps -p $$) =~ "-bash" ]]; then
+if [[ $(ps -p $$) =~ "bash" ]]; then
     EEXT="-e"
 else
     EEXT=""

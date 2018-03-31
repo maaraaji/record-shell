@@ -17,7 +17,7 @@ RSD="${HOME}/rcd-scripts/"
 # Command Name
 CMD_NAME=$(basename ${0})
 # Echo extended
-if [[ $(ps -p $$) =~ "-bash" ]]; then
+if [[ $(ps -p $$) =~ "bash" ]]; then
     EEXT="-e"
 else
     EEXT=""
