@@ -29,9 +29,9 @@ To set manual type **`m`**, then it will ask you to enter the home directory nam
 5. Thats It all done. You are good to use **rcd** command
 
 
-rcd will record your desired commands and make it as a single script 
+### **Usage:**
 
-***USAGE:***
+***rcd*** will record your desired commands and make it as a single script 
 >rcd [-s] [-a] [-d] [-e] [-h] [-q] [-l]  
 [-v] **FILENAME** or **NUMBER**  
 [-r] **Scriptname.sh**  
