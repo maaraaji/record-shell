@@ -47,7 +47,7 @@ USAGE="\n${BLD}${UND}$(basename ${0})${NRM} will record your desired commands an
     ${NTB}-e${NTDT}End the recording\n
     ${NTB}-a${NTDT}Record the last executed command to the recording script file\n
     ${NTB}-d${NTDT}Record the current working directory to the script file\n
-    ${NTB}-l${NTDT}List of recorded script files. Highlighted file is the recording file if any.\n
+    ${NTB}-l${NTDT}List of recorded script files. Highlighted file is the recording file if recording is running.\n
     ${NTB}-v${NTDT}View the recording script
     ${NTB}${NTDT}With ${UND}${BLD}FILENAME${NRM} or ${UND}${BLD}NUMBER${NRM}, view the specific script file\n
     ${NTB}-q${NTDT}Current status of the recording\n
