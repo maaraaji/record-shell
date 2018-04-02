@@ -12,7 +12,7 @@ if [[ $(ps -p $$) =~ "bash" ]]; then
     REDP="-p"
 else
     EEXT=""
-    REDP
+    REDP=""
 fi
 
 function steps(){
@@ -84,7 +84,7 @@ if test -n "$BASH_VERSION"; then
         fi
     done
     echo ${EEXT} "============================================================================================"
-    echo ${EEXT} "Well done! Installation completed. To know what ${BLD}Record(rcd)${NRM} can do, type ${BLD}rcd -u${NRM}"
+    echo ${EEXT} "Well done! Installation completed. To know what ${BLD}Record(rcd)${NRM} can do, type ${BLD}rcd -h${NRM}"
     echo ${EEXT} "============================================================================================\n"
     if [[ ! $(echo ${EEXT} $PATH) =~ ${MACRO_HOME_DIR}/bin/cmd ]]; then
         echo ${EEXT} "Type ${BLD} source ~/.bash_profile ${NRM}to activate the command\n"
@@ -103,7 +103,7 @@ elif test -n "$ZSH_VERSION"; then
         fi
     done
     echo ${EEXT} "============================================================================================"
-    echo ${EEXT} "Well done! Installation completed. To know what ${BLD}Record(rcd)${NRM} can do, type ${BLD}rcd -u${NRM}"
+    echo ${EEXT} "Well done! Installation completed. To know what ${BLD}Record(rcd)${NRM} can do, type ${BLD}rcd -h${NRM}"
     echo ${EEXT} "============================================================================================\n"
     if [[ ! $(echo ${EEXT} $PATH) =~ ${MACRO_HOME_DIR}/bin/cmd ]]; then
             echo ${EEXT} "Type ${BLD} source ~/.zshrc ${NRM}to activate the command\n"

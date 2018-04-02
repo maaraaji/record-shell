@@ -47,7 +47,7 @@ Options | Briefing
 -e|End the recording 
 -a|Record the last executed command to the recording script file
 -d|Record the current working directory to the script file
--l|List of recorded script files. Highlighted file is the recording file if recording is running.
+-l|List of recorded script files. Highlighted file is the recording file if recording is running .
 -v|View the recording script. With **FILENAME** or **NUMBER**, view the specific script file
 -q|Current status of the recording
 -r|Remove recorded empty script files. With **Scriptname.sh**,Remove the specified script file
