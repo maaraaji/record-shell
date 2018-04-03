@@ -23,8 +23,14 @@ $ zsh ./instsall.sh
 
 ```bash
 To set default type d
-To set manual type **`m`**, then it will ask you to enter the home directory name
+To set manual type m, then it will ask you to enter the home directory name
 ```
+>If you are installing it in zsh, please check if rcd-home/bin/cmd is correctly set to PATH as below,  
+>`$ cat ~/.zshrc | grep "export PATH"`  
+>This should show rcd-home/bin/cmd in PATH.  
+>Check the PATH env variable as below and see if PATH have rcd-home/bin/cmd in it,  
+>`$ env | grep PATH`  
+>If env don't have rcd-home/bin/cmd in PATH but .zshrc have it, then type `source ~/.zshrc` to load the PATH variable.
 
 5. Thats It all done. You are good to use **rcd** command
 
