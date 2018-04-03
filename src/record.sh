@@ -1,3 +1,4 @@
+#!/bin/bash
 # Initialization of global variables
 # New Line + Tab + Bold
 NTB="\n\t$(tput bold)"
@@ -187,8 +188,12 @@ function endAsOption() {
 function showScriptAsOption() {
     getRecordFilename
     if [[ ! "${FN}" = "" ]]; then
-        echo ${EEXT} "\n$(cat ${FN})"
-        echo ${EEXT} "\n${BLD}at ${FN}${NRM}\n"
+        if [[ ! -f ${FN} ]]; then
+            echo ${EEXT} "\nNothing to view. Either recently recorded script got renamed or record never started!\n"
+        else
+            echo ${EEXT} "\n$(cat ${FN})"
+            echo ${EEXT} "\n${BLD}at ${FN}${NRM}\n"
+        fi
     else
         echo ${EEXT} "\nRecord not running.\n"
     fi
