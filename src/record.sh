@@ -154,6 +154,14 @@ function statusAsOption() {
         echo ${EEXT} "\nRecord haven't started ever. Start the recording using ${BLD}${CMD_NAME} -s${NRM} \n"
         echo ${EEXT} ${USAGE}
         return 1
+    elif [[ $(cat ${RCF}) = "" ]]; then
+        echo ${EEXT} "\nRecord haven't started ever. Start the recording using ${BLD}${CMD_NAME} -s${NRM} \n"
+        echo ${EEXT} ${USAGE}
+        return 1
+    elif [[ $(grep "ST" ${RCF}) = "" ]]; then
+        echo ${EEXT} "\nRecord haven't started ever. Start the recording using ${BLD}${CMD_NAME} -s${NRM} \n"
+        echo ${EEXT} ${USAGE}
+        return 1
     elif [[ $(grep "ST" ${RCF}) =~ "NO" ]]; then
         echo ${EEXT} "\nRecord not started.\n"
         return 1
