@@ -125,7 +125,7 @@ function aboveAsOption() {
         getRecordFilename
         PREV_CMD=$(history 2 | head -n1 | cut -c 8-)
         echo ${EEXT} "\nAdded => ${PREV_CMD}\n"
-        echo "=======================> Executing ${PREV_CMD}"
+        echo "=======================> Executing ${PREV_CMD}" >> ${FN}
         echo "${PREV_CMD}" >> ${FN}
         return
     else
