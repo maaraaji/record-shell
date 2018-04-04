@@ -41,7 +41,7 @@ $ source ~/.bash_profile
 $ source ~/.zshrc
 ```
 
-6. Thats It all done. You are good to use **rcd** command
+6. Thats It all done. You are good to use ***rcd*** command
 
 
 ### **Usage:**
