@@ -1,4 +1,4 @@
-#!/bin/bash
+
 # Initialization of global variables
 # New Line + Tab + Bold
 NTB="\n\t$(tput bold)"
@@ -124,7 +124,7 @@ function aboveAsOption() {
     if [[ ${?} -ne 1 ]]; then
         getRecordFilename
         PREV_CMD=$(history 2 | head -n1 | cut -c 8-)
-        # echo ${EEXT} "The history is  ${PREV_CMD}"
+        echo ${EEXT} "\nAdded => ${PREV_CMD}\n"
         echo "${PREV_CMD}" >> ${FN}
         return
     else
@@ -139,6 +139,7 @@ function dirAsOption() {
         getRecordFilename
         CURRENT_DIR=$(pwd)
         echo "cd ${CURRENT_DIR}" >> ${FN}
+        echo ${EEXT} "\nAdded => cd ${CURRENT_DIR}\n"
         return
     else
         echo ${EEXT} "\nRecord not started. Start the recording using ${BLD}${CMD_NAME} -s${NRM} to record the directory\n"
