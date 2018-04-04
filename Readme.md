@@ -32,7 +32,16 @@ To set manual type m, then it will ask you to enter the home directory name
 >`$ env | grep PATH`  
 >If env don't have rcd-home/bin/cmd in PATH but .zshrc have it, then type `source ~/.zshrc` to load the PATH variable.
 
-5. Thats It all done. You are good to use **rcd** command
+5. Finally, type below commands to ensure rcd-home cmd directory is added to path to use rcd command  
+```bash
+# If bash environment
+$ source ~/.bash_profile
+
+# If zsh environemtn
+$ source ~/.zshrc
+```
+
+6. Thats It all done. You are good to use **rcd** command
 
 
 ### **Usage:**
