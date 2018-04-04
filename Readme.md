@@ -37,6 +37,8 @@ To set manual type m, then it will ask you to enter the home directory name
 
 ### **Usage:**
 
+![record-shell](record-shell.gif)
+
 ***rcd*** will record your desired commands and make it as a single script 
 >rcd [-s] [-a] [-d] [-e] [-h] [-q] [-l]  
 [-v] **FILENAME** or **NUMBER**  
