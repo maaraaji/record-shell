@@ -1,4 +1,4 @@
-
+#!/bin/bash
 # Initialization of global variables
 # New Line + Tab + Bold
 NTB="\n\t$(tput bold)"
@@ -19,8 +19,12 @@ CMD_NAME=$(basename ${0})
 # Echo extended
 if [[ $(ps -p $$) =~ "bash" ]]; then
     EEXT="-e"
+    # Initializing the history file
+    HISTFILE=~/.bash_history
 else
     EEXT=""
+    # Initializing the history file
+    HISTFILE=~/.zsh_history
 fi
 # SED empty argument if executing in Mac OSX
 if [[ $(echo ${TERM_PROGRAM}) =~ "Apple_Terminal" ]]; then
@@ -28,6 +32,7 @@ if [[ $(echo ${TERM_PROGRAM}) =~ "Apple_Terminal" ]]; then
 elif [[ $(echo ${TERM_PROGRAM}) =~ "iTerm.app" ]]; then
     SEDE="''"
 fi
+set -o history
 
 # USAGE="\n${BLD}${UND}$(basename ${0})${NRM} will record your desired commands and make it as a single script
 #     \n\nUSAGE:
