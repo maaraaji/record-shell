@@ -1,5 +1,5 @@
 #!/bin/bash
-set -H history
+history -a
 # Initialization of global variables
 # New Line + Tab + Bold
 NTB="\n\t$(tput bold)"
