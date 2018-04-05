@@ -75,6 +75,8 @@ if test -n "$BASH_VERSION"; then
     while [[ ${ADDED_TO_BASH} = 0 ]]; do
         if [[ ! $(echo ${EEXT} ${PATH}) =~ "${MACRO_HOME_DIR}/bin/cmd" ]]; then
             echo ${EEXT} "export PATH=$PATH:${MACRO_HOME_DIR}/bin/cmd" >>${HOME}/.bash_profile
+            echo "shopt -s histappend" >>${HOME}/.bash_profile
+            echo "PROMPT_COMMAND=\"history -a;${PROMPT_COMMAND}\"" >>${HOME}/.bash_profile
             echo ${EEXT} "Added to PATH"
             source ${HOME}/.bash_profile
             echo ${EEXT} "BASH profile sourced\n"
@@ -94,6 +96,8 @@ elif test -n "$ZSH_VERSION"; then
     while [[ ${ADDED_TO_ZSH} = 0 ]]; do
         if [[ ! $(grep "PATH" ${HOME}/.zshrc) =~ "${MACRO_HOME_DIR}/bin/cmd" ]]; then
             echo ${EEXT} "export PATH=$PATH:${MACRO_HOME_DIR}/bin/cmd" >>${HOME}/.zshrc
+            echo "shopt -s histappend" >>${HOME}/.zshrc
+            echo "PROMPT_COMMAND=\"history -a;${PROMPT_COMMAND}\"" >>${HOME}/.zshrc
             echo ${EEXT} "Added to PATH\n"
             source ${HOME}/.zshrc
             # echo ${EEXT} "ZSH Profile sourced"
