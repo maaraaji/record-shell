@@ -82,7 +82,7 @@ function initRecordConfig() {
 # If validated as the recording needs to be started then modify the start configuration and provided the new filename
 function recordStart() {
     ST="YES"
-    FN="${RSD}myscript$(echo $(date +%s)${RANDOM}).sh"
+    FN="${RSD}myscript$(echo $(date +%s)${RANDOM})"
     if [[ ! -d "${RSD}" ]]; then
         mkdir "${RSD}"
     fi
