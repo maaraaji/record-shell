@@ -206,7 +206,7 @@ function showScriptAsOption() {
 function showSpecificScriptAsOption() {
     FILE_TO_SHOW=${1}
     if [[ $(echo ${FILE_TO_SHOW} | grep ".sh") = "" ]]; then
-        FILE_NAME=$(ls -ltrh ${RSD} | nl -b p[.*sh] -n ln | grep "^${FILE_TO_SHOW}" | sed 's|.* ||g')
+        FILE_NAME=$(ls -lh ${RSD} | nl -b p[.*sh] -n ln | grep "^${FILE_TO_SHOW}" | sed 's|.* ||g')
         echo ${EEXT} "\n************${BLD}at $(basename ${FILE_NAME})${NRM}************"
         echo ${EEXT} "\n$(cat ${RSD}${FILE_NAME} | nl -n ln)"
         echo ${EEXT} "\n************${BLD}at ${RSD}${NRM}************\n"
@@ -315,7 +315,7 @@ function exportFileAsOption() {
 function executeFileAsOption() {
     FILE_TO_EXEC=${1}
     if [[ $(echo ${FILE_TO_EXEC} | grep ".sh") = "" ]]; then
-        FILE_NAME=$(ls -ltrh ${RSD} | nl -b p[.*sh] -n ln | grep "^${FILE_TO_EXEC}" | sed 's|.* ||g')
+        FILE_NAME=$(ls -lh ${RSD} | nl -b p[.*sh] -n ln | grep "^${FILE_TO_EXEC}" | sed 's|.* ||g')
         sh ${RSD}${FILE_NAME}
     elif [[ $(basename ${FILE_TO_EXEC}) = ${FILE_TO_EXEC} ]]; then
         if [[ ! -f ${RSD}${FILE_TO_EXEC} ]]; then
