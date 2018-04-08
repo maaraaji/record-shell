@@ -234,7 +234,7 @@ function listFilesAsOption() {
         echo ${EEXT} "\nRecord haven't started ever. Start the recording using ${BLD}${CMD_NAME} -s${NRM} \n"
         exit 1
     fi
-    LIST_OF_FILES=$(ls -ltrh ${RSD} | nl -b p[.*sh] -n ln)
+    LIST_OF_FILES=$(ls -lh ${RSD} | nl -b p[.*sh] -n ln)
     statusAsOption >/dev/null
     if [[ ${?} -ne 1 ]]; then
         echo ${EEXT} "\nRecord is running and can store the script to the highlighted file"
