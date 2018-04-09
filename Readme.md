@@ -1,4 +1,4 @@
-# Record
+# Record [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
 #### Record your terminal commands and executes from anywhere anytime any number of times without hassle.
 ### **Installation**
