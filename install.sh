@@ -23,7 +23,6 @@ function steps(){
 
 steps "STEP 1\t➸\t Create home directory for ${BLD}Record(rcd)${NRM}"
 echo ${EEXT} "Default is ${BLD}${MACRO_HOME_DIR}${NRM}"
-echo ${REDP}
 if [[ $(ps -p $$) =~ "bash" ]]; then
     read -p "Set Manually/Set Default [m/d] : ${BLD}" CREATE_MACRO_HOME_DIR
 else
