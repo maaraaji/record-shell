@@ -1,4 +1,5 @@
 # Record
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/maaraaji/record-shell/blob/master/LICENSE)
 ---
 #### Record your terminal commands and executes from anywhere anytime any number of times without hassle.
 ### **Installation**
